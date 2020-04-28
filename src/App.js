@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Table from "./components/Table";
+import Dados from "./dados.json";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    autores: Dados,
+  };
+
+  removeAutor = (index) => {
+    const {autores} = this.state;
+    this.setState({
+      autores: autores.filter((autor, posAtual) => {
+        return posAtual !== index;
+      })
+    });
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <Table autores={this.state.autores} removeAutor={this.removeAutor} />
+      </div>
+    );
+  }
 }
 
 export default App;

@@ -1,8 +1,15 @@
 import React, { Component } from "react";
+import FormValidator from "./FormValidator";
 
 class Formulario extends Component {
   constructor(props) {
     super(props);
+
+    this.validador = new FormValidator({
+      campo: "nome",
+      metodo: "isEmpty",
+    });
+
     this.stateInicial = {
       nome: "",
       livro: "",
@@ -20,8 +27,10 @@ class Formulario extends Component {
   };
 
   submitForm = () => {
-    this.props.listenSubmit(this.state);
-    this.setState(this.stateInicial);
+    if (this.validador.valida(this.state)) {
+      this.props.listenSubmit(this.state);
+      this.setState(this.stateInicial);
+    }
   };
 
   render() {
@@ -57,9 +66,7 @@ class Formulario extends Component {
             />
           </div>
           <div className="input-field col s4">
-            <label  htmlFor="preco">
-              Preço
-            </label>
+            <label htmlFor="preco">Preço</label>
             <input
               className="validate"
               type="text"
@@ -70,7 +77,11 @@ class Formulario extends Component {
             />
           </div>
         </div>
-        <button className="deep-purple darken-1 btn"type="button" onClick={this.submitForm}>
+        <button
+          className="deep-purple darken-1 btn"
+          type="button"
+          onClick={this.submitForm}
+        >
           Salvar
         </button>
       </form>

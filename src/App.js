@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import "./App.css";
 import Table from "./components/Table";
 import Dados from "./dados.json";
+import Form from "./components/Formulario";
 
 class App extends Component {
   state = {
@@ -9,19 +10,20 @@ class App extends Component {
   };
 
   removeAutor = (index) => {
-    const {autores} = this.state;
+    const { autores } = this.state;
     this.setState({
       autores: autores.filter((autor, posAtual) => {
         return posAtual !== index;
-      })
+      }),
     });
   };
 
   render() {
     return (
-      <div className="App">
+      <Fragment>
         <Table autores={this.state.autores} removeAutor={this.removeAutor} />
-      </div>
+        <Form />
+      </Fragment>
     );
   }
 }

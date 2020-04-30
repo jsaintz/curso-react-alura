@@ -18,11 +18,17 @@ class App extends Component {
     });
   };
 
+  listenSubmit = (autor) => {
+    this.setState({
+      autores: [...this.state.autores, autor],
+    });
+  };
+
   render() {
     return (
       <Fragment>
         <Table autores={this.state.autores} removeAutor={this.removeAutor} />
-        <Form />
+        <Form listenSubmit={this.listenSubmit} />
       </Fragment>
     );
   }

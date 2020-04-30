@@ -29,34 +29,48 @@ class Formulario extends Component {
 
     return (
       <form>
-        <label htmlFor="nome">Nome</label>
-        <input
-          type="text"
-          id="nome"
-          name="nome"
-          value={nome}
-          onChange={this.listenInput}
-        />
-
-        <label htmlFor="livro">Livro</label>
-        <input
-          type="text"
-          id="livro"
-          name="livro"
-          value={livro}
-          onChange={this.listenInput}
-        />
-
-        <label htmlFor="preco">Preço</label>
-        <input
-          type="text"
-          id="preco"
-          name="preco"
-          value={preco}
-          onChange={this.listenInput}
-        />
-
-        <button type="button" onClick={this.submitForm}>
+        <div className="row">
+          <div className="input-field col s4">
+            <label className="input-field" htmlFor="nome">
+              Nome
+            </label>
+            <input
+              className="validate"
+              type="text"
+              id="nome"
+              name="nome"
+              value={nome}
+              onChange={this.listenInput}
+            />
+          </div>
+          <div className="input-field col s4">
+            <label className="input-field" htmlFor="livro">
+              Livro
+            </label>
+            <input
+              className="validate"
+              type="text"
+              id="livro"
+              name="livro"
+              value={livro}
+              onChange={this.listenInput}
+            />
+          </div>
+          <div className="input-field col s4">
+            <label  htmlFor="preco">
+              Preço
+            </label>
+            <input
+              className="validate"
+              type="text"
+              id="preco"
+              name="preco"
+              value={preco}
+              onChange={this.listenInput}
+            />
+          </div>
+        </div>
+        <button className="deep-purple darken-1 btn"type="button" onClick={this.submitForm}>
           Salvar
         </button>
       </form>

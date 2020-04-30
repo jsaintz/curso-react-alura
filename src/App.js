@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from "react";
-import "./App.css";
 import Table from "./components/Table";
 import Dados from "./dados.json";
 import Form from "./components/Formulario";
+import "materialize-css/dist/css/materialize.min.css";
+import Header from "./components/Header";
+import './App.css';
 
 class App extends Component {
   state = {
@@ -27,8 +29,11 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        <Table autores={this.state.autores} removeAutor={this.removeAutor} />
-        <Form listenSubmit={this.listenSubmit} />
+        <Header />
+        <div className="container mb-10">
+          <Table autores={this.state.autores} removeAutor={this.removeAutor} />
+          <Form listenSubmit={this.listenSubmit} />
+        </div>
       </Fragment>
     );
   }

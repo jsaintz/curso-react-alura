@@ -21,7 +21,14 @@ const TableBody = (props) => {
         <td>{row.livro}</td>
         <td>{row.preco}</td>
         <td>
-          <button onClick={() => {props.removeAutor(index)}} >Remover</button>
+          <button
+            className="deep-purple darken-1 btn"
+            onClick={() => {
+              props.removeAutor(index);
+            }}
+          >
+            Remover
+          </button>
         </td>
       </tr>
     );
@@ -31,13 +38,12 @@ const TableBody = (props) => {
 };
 class Table extends Component {
   render() {
-    const {autores, removeAutor} = this.props;
-
+    const { autores, removeAutor } = this.props;
 
     return (
-      <table>
+      <table className="centered highlight">
         <TableHead />
-        <TableBody autores={autores} removeAutor={removeAutor}  />
+        <TableBody autores={autores} removeAutor={removeAutor} />
       </table>
     );
   }

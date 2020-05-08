@@ -5,6 +5,7 @@ import Form from "./components/Formulario";
 import "materialize-css/dist/css/materialize.min.css";
 import Header from "./components/Header";
 import './App.css';
+import PopUp from './components/PopUp'
 
 class App extends Component {
   state = {
@@ -18,12 +19,15 @@ class App extends Component {
         return posAtual !== index;
       }),
     });
+    PopUp.exibeMensagem('error', 'Autor removido com Sucesso!!!');
+
   };
 
   listenSubmit = (autor) => {
     this.setState({
       autores: [...this.state.autores, autor],
     });
+    PopUp.exibeMensagem('success', 'Autor Adiconado com Sucesso!!!');
   };
 
   render() {

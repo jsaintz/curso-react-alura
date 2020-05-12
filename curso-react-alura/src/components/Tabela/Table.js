@@ -4,9 +4,9 @@ const TableHead = () => {
   return (
     <thead>
       <tr>
-        <th>Autores</th>
-        <th>Livros</th>
-        <th>Preços</th>
+        <th>Autor</th>
+        <th>Livro</th>
+        <th>Preco</th>
         <th>Remover</th>
       </tr>
     </thead>
@@ -14,18 +14,16 @@ const TableHead = () => {
 };
 
 const TableBody = (props) => {
-  const rows = props.autores.map((row, index) => {
+  const linhas = props.autores.map((linha, index) => {
     return (
       <tr key={index}>
-        <td>{row.nome}</td>
-        <td>{row.livro}</td>
-        <td>{row.preco}</td>
+        <td>{linha.nome}</td>
+        <td>{linha.livro}</td>
+        <td>{linha.preco}</td>
         <td>
           <button
-            className="deep-purple darken-1 btn"
-            onClick={() => {
-              props.removeAutor(index);
-            }}
+            onClick={() => props.removeAutor(index)}
+            className="waves-effect waves-light indigo lighten-2 btn"
           >
             Remover
           </button>
@@ -34,9 +32,10 @@ const TableBody = (props) => {
     );
   });
 
-  return <tbody>{rows}</tbody>;
+  return <tbody>{linhas}</tbody>;
 };
-class Table extends Component {
+
+class Tabela extends Component {
   render() {
     const { autores, removeAutor } = this.props;
 
@@ -48,5 +47,4 @@ class Table extends Component {
     );
   }
 }
-
-export default Table;
+export default Tabela;
